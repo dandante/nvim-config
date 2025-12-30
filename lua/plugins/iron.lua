@@ -5,7 +5,9 @@ return {
     local iron = require("iron.core")
     local ok, wk = pcall(require, "which-key")
     if ok then
-      wk.add({ { "<leader>r", group = "REPL" } })
+    wk.add({
+        { "<leader>r", group = "REPL", mode = { "n", "v" } },
+      })
     end
     iron.setup({
       config = {
