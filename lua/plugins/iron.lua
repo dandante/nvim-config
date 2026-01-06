@@ -5,7 +5,7 @@ return {
     local iron = require("iron.core")
     local ok, wk = pcall(require, "which-key")
     if ok then
-    wk.add({
+      wk.add({
         { "<leader>r", group = "REPL", mode = { "n", "v" } },
       })
     end
@@ -18,8 +18,10 @@ return {
           [""] = { command = { "fish" } },
           -- 2. Handle standard shell files
           sh = { command = { "fish" } },
+          ["lua"] = { command = { "luajit" } },
+
           -- 3. The general fallback
-          ["*"] = { command = { "fish" } }, 
+          ["*"] = { command = { "fish" } },
         },
       },
       should_set_cursor = false,
@@ -30,7 +32,7 @@ return {
     local map = vim.keymap.set
     -- Open the REPL
     map("n", "<leader>rc", "<cmd>IronRepl<cr>", { desc = "Iron: Toggle REPL" })
-    
+
     -- Send the current line
     map("n", "<leader>rl", function()
       require("iron.core").send_line()
@@ -39,11 +41,16 @@ return {
     -- Normal Mode: Send a Register
     -- If you just hit Enter at the prompt, it sends the default (") register
     map("n", "<leader>rr", function()
-      local reg = vim.fn.input("Register (default: \"): ")
-      if reg == "" then reg = '"' end
+      local reg = vim.fn.input('Register (default: "): ')
+      if reg == "" then
+        reg = '"'
+      end
       local content = vim.fn.getreg(reg)
-  -- Ensure we have something to send
+      -- Ensure we have something to send
       if content ~= "" then
+        if string.sub(content, -1) ~= "\n" then
+          content = content .. "\n"
+        end
         iron.send(nil, content)
       else
         print("Register " .. reg .. " is empty")
