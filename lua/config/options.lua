@@ -21,3 +21,12 @@ if vim.env.SSH_TTY then
     },
   }
 end
+
+-- a macro to change bash style exports to fish style:
+-- run it with @q
+vim.fn.setreg(
+  "q",
+  [[:%s/export /set -x /g
+:%s/=".\@=/ "/g
+]]
+)
