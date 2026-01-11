@@ -23,7 +23,7 @@ if vim.env.SSH_TTY then
 end
 
 -- open fish instead of bash with CTRL-/
-if vim.fn.system({"uname"}):sub(1, -2) == "Linux" then
+if vim.fn.system({ "uname" }):sub(1, -2) == "Linux" then
   vim.opt.shell = vim.fn.expand("~/.fish/bin/fish")
 end
 
@@ -35,3 +35,5 @@ vim.fn.setreg(
 :%s/=".\@=/ "/g
 ]]
 )
+
+vim.opt.inccommand = "split"
