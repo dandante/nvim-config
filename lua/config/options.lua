@@ -27,3 +27,11 @@ if vim.fn.system({"uname"}):sub(1, -2) == "Linux" then
   vim.opt.shell = vim.fn.expand("~/.fish/bin/fish")
 end
 
+-- a macro to change bash style exports to fish style:
+-- run it with @q
+vim.fn.setreg(
+  "q",
+  [[:%s/export /set -x /g
+:%s/=".\@=/ "/g
+]]
+)
