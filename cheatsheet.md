@@ -22,4 +22,5 @@
 ## Navigating buffers
 
 `H` and `L` to move left/right between open buffers.
+Close current buffer with `:bd`.
 
