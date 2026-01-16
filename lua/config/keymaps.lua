@@ -9,3 +9,15 @@ vim.keymap.set("n", "<leader>h", function()
     vim.cmd("Alpha") -- Fallback for older setups
   end
 end, { desc = "Go to Dashboard" })
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>=", group = "Flash" }, -- group
+  {
+    "<leader>=s",
+    function()
+      require("flash").jump()
+    end,
+    desc = "Jump",
+  },
+})
