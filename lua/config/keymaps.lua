@@ -21,3 +21,16 @@ wk.add({
     desc = "Jump",
   },
 })
+
+-- keys for resizing windows
+-- Resize windows using Alt + hjkl
+vim.keymap.set("n", "<M-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<M-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+vim.keymap.set("n", "<M-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+vim.keymap.set("n", "<M-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+
+-- OR use Alt + hjkl if you prefer no arrows at all:
+vim.keymap.set("n", "<M-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<M-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+vim.keymap.set("n", "<M-k>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+vim.keymap.set("n", "<M-j>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
