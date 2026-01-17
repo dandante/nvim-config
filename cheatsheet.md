@@ -50,3 +50,9 @@ Still figuring out some subtleties of this.
 ## Resize Buffers
 
 `ALT-HJKL` (These are custom keymaps)
+
+## Moving selections up and down (Visual mode)
+
+Related key combinations `ALT-K` and `ALT-J` move selected
+text up and down in visual mode.
+
