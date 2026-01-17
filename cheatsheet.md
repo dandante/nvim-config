@@ -55,4 +55,6 @@ Still figuring out some subtleties of this.
 
 Related key combinations `ALT-K` and `ALT-J` move selected
 text up and down in visual mode.
+`>` and `<` indent and dedent the selection.
+
 
