@@ -57,4 +57,9 @@ Related key combinations `ALT-K` and `ALT-J` move selected
 text up and down in visual mode.
 `>` and `<` indent and dedent the selection.
 
+## Enable soft wrap
+
+```
+:set wrap
+```
 
