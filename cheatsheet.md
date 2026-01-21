@@ -63,3 +63,10 @@ text up and down in visual mode.
 :set wrap
 ```
 
+ ## Break up long lines of text
+
+```
+gw$
+```
+
+will break up the current line to the end of the line.
