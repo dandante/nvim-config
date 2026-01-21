@@ -70,3 +70,5 @@ gw$
 ```
 
 will break up the current line to the end of the line.
+
+In visual mode, `gw` will break up the selection. 
