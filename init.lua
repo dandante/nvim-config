@@ -1,8 +1,8 @@
 
 -- If we wanted to change the leader key from the default (\) we'd uncomment:
 -- SET THIS FIRST
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+--vim.g.mapleader = " "
+--vim.g.maplocalleader = " "
 
 require("plugins")
 
