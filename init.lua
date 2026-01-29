@@ -71,9 +71,32 @@ vim.opt.iskeyword:append("-")                      -- Treat dash as part of word
 vim.opt.path:append("**")                          -- include subdirectories in search
 vim.opt.selection = "exclusive"                    -- Selection behavior
 vim.opt.mouse = "a"                                -- Enable mouse support
-vim.opt.clipboard:append("unnamedplus")            -- Use system clipboard
+-- vim.opt.clipboard:append("unnamedplus")            -- Use system clipboard
 vim.opt.modifiable = true                          -- Allow buffer modifications
 vim.opt.encoding = "UTF-8"                         -- Set encoding
+
+-- Clipboard settings
+-- 1. Enable the link between Neovim registers and the system clipboard
+vim.opt.clipboard = "unnamedplus"
+
+-- 2. Configure the provider
+if os.getenv("SSH_TTY") then
+    -- We are remote: Force OSC 52
+    vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = {
+            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+        },
+        paste = {
+            ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+        },
+    }
+else
+    -- We are local: Use the default (pbcopy on Mac)
+    -- No extra config needed, Neovim handles pbcopy automatically
+end
 
 -- Cursor settings
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
@@ -560,3 +583,12 @@ local function setup_dynamic_statusline()
 end
 
 setup_dynamic_statusline()
+
+-- PLUGINS
+
+vim.pack.add({
+  {
+    src = "https://github.com/folke/which-key.nvim",
+  }
+})
+
