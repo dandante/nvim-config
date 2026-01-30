@@ -37,3 +37,4 @@ vim.fn.setreg(
 )
 
 vim.opt.inccommand = "split"
+vim.opt.spell = false
