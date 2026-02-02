@@ -27,14 +27,33 @@ if vim.fn.system({ "uname" }):sub(1, -2) == "Linux" then
   vim.opt.shell = vim.fn.expand("~/.fish/bin/fish")
 end
 
--- a macro to change bash style exports to fish style:
--- run it with @q
-vim.fn.setreg(
-  "q",
-  [[:%s/export /set -x /g
-:%s/=".\@=/ "/g
-]]
-)
-
 vim.opt.inccommand = "split"
 vim.opt.spell = false
+
+-- Custom user commands
+
+-- fix happyfox vertical space issue in markdown mode
+vim.api.nvim_create_user_command("Happyfix", "%s/\\n\\n/\\r\\&nbsp;\\r/g", {})
+-- related: remove non-breaking spaces and preceding newline
+vim.api.nvim_create_user_command("Unhappy", "%s/\n%u00a0//g", {})
+-- erase all contents of buffer, go to insert mode
+vim.api.nvim_create_user_command("Deldoc", function()
+  vim.cmd('keepjumps norm! ggVG"_d')
+  vim.cmd("startinsert")
+end, {})
+-- convert bash style exports to fish style:
+vim.api.nvim_create_user_command("Fishify", function()
+  local view = vim.fn.winsaveview()
+
+  -- 1. Replace 'export ' with 'set -x '
+  -- The 'g' flag handles multiple exports on one line (if they exist)
+  vim.cmd([[silent! %s/export /set -x /g]])
+
+  -- 2. Replace '=' with ' ' (a single space)
+  -- This will turn KEY="value" into KEY "value"
+  -- and KEY=value into KEY value
+  vim.cmd([[silent! %s/=/ /]])
+
+  vim.fn.winrestview(view)
+  print("Bash exports converted to Fish style!")
+end, { desc = "Convert bash exports to fish set -x" })
