@@ -72,3 +72,12 @@ gw$
 will break up the current line to the end of the line.
 
 In visual mode, `gw` will break up the selection. 
+
+## Select entire indented block
+
+In an indentation-based language like Python or Nim, you can
+go to the beginning of the current indentation block with `[i`.
+You may have to do that twice to really get where you want.
+If you then want to select the entire indented block, do
+`V]i`. 
+
