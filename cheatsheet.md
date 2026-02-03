@@ -81,3 +81,9 @@ You may have to do that twice to really get where you want.
 If you then want to select the entire indented block, do
 `V]i`. 
 
+
+## Reformat a paragraph of plain text
+
+This seems to be hard to find in the neo(vim) ecosystem.
+But it works well to simply send the selection to `!fmt`.
+
