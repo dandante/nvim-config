@@ -87,3 +87,9 @@ If you then want to select the entire indented block, do
 This seems to be hard to find in the neo(vim) ecosystem.
 But it works well to simply send the selection to `!fmt`.
 
+Update: It should work with e.g. `gqap` (`gq` = format command,
+`ap` = "around paragraph"). But some plugin in lazyvim 
+seems to hijack that key. However, `gwap` works.
+
+You can use this in conjunction with `:set textwidth=X` where 
+`X` is some number of columns.

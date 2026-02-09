@@ -57,3 +57,5 @@ vim.api.nvim_create_user_command("Fishify", function()
   vim.fn.winrestview(view)
   print("Bash exports converted to Fish style!")
 end, { desc = "Convert bash exports to fish set -x" })
+
+vim.opt.swapfile = false
