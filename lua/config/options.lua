@@ -59,3 +59,35 @@ vim.api.nvim_create_user_command("Fishify", function()
 end, { desc = "Convert bash exports to fish set -x" })
 
 vim.opt.swapfile = false
+
+local function open_messages_floating()
+  -- Get the messages
+  local messages = vim.fn.execute("messages")
+
+  -- Create a new buffer
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(messages, "\n"))
+
+  -- Calculate window size (80% of editor)
+  local width = math.floor(vim.o.columns * 0.8)
+  local height = math.floor(vim.o.lines * 0.8)
+  local row = math.floor((vim.o.lines - height) / 2)
+  local col = math.floor((vim.o.columns - width) / 2)
+
+  -- Open the floating window
+  vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = row,
+    col = col,
+    style = "minimal",
+    border = "rounded",
+  })
+
+  -- Optional: Set filetype to markdown for some basic highlighting
+  vim.bo[buf].filetype = "bash"
+end
+
+-- Keymap to trigger it
+vim.keymap.set("n", "<leader>ms", open_messages_floating, { desc = "Show Messages in Float" })
