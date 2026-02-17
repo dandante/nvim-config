@@ -1,0 +1,22 @@
+{
+  "aws env vars for fish": {
+    "prefix": "awsfish",
+    "body": [
+      "set -x AWS_ACCESS_KEY_ID \"$1\"",
+      "set -x AWS_SECRET_ACCESS_KEY \"$2\"",
+      "set -x AWS_DEFAULT_REGION \"$3\"",
+      "set -x AWS_SESSION_TOKEN \"$4\""
+    ],
+    "description": "AWS env vars for fish"
+  },
+  "aws env vars for bash": {
+    "prefix": "awsbash",
+    "body": [
+      "export AWS_ACCESS_KEY_ID=\"$1\"",
+      "export AWS_SECRET_ACCESS_KEY=\"$2\"",
+      "export AWS_DEFAULT_REGION=\"$3\"",
+      "export AWS_SESSION_TOKEN=\"$4\""
+    ],
+    "description": "AWS env vars for bash"
+  }
+}
