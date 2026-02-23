@@ -91,3 +91,5 @@ end
 
 -- Keymap to trigger it
 vim.keymap.set("n", "<leader>ms", open_messages_floating, { desc = "Show Messages in Float" })
+
+vim.g.autoformat = false

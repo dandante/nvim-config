@@ -93,3 +93,10 @@ seems to hijack that key. However, `gwap` works.
 
 You can use this in conjunction with `:set textwidth=X` where 
 `X` is some number of columns.
+
+
+## Reformatting code
+
+I turned off format-on-save because it pollutes git diffs.
+(`vim.g.autoformat = false` in `options.lua`) but you
+can format a file with `:LazyFormat`.
