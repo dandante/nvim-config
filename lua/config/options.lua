@@ -36,6 +36,7 @@ vim.opt.spell = false
 vim.api.nvim_create_user_command("Happyfix", "%s/\\n\\n/\\r\\&nbsp;\\r/g", {})
 -- related: remove non-breaking spaces and preceding newline
 vim.api.nvim_create_user_command("Unhappy", "%s/\n%u00a0//g", {})
+vim.api.nvim_create_user_command("Backslash2Slash", "snomagic!\\\\!/!g", {})
 -- erase all contents of buffer, go to insert mode
 vim.api.nvim_create_user_command("Deldoc", function()
   vim.cmd('keepjumps norm! ggVG"_d')
