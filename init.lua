@@ -6,3 +6,8 @@ require("oil").setup({
     show_hidden = true,
   },
 })
+vim.filetype.add({
+  extension = {
+    ['eb'] = 'python',
+  },
+})
