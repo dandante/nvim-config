@@ -11,3 +11,6 @@ vim.filetype.add({
     ['eb'] = 'python',
   },
 })
+
+vim.lsp.enable('ty')
+
