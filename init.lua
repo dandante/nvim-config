@@ -12,5 +12,5 @@ vim.filetype.add({
   },
 })
 
-vim.lsp.enable('ty')
+-- vim.lsp.enable('ty')
 
