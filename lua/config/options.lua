@@ -3,8 +3,7 @@
 -- Add any additional options here
 -- vim.opt.relativenumber=false
 vim.opt.laststatus = 3 -- Always show a single global statusline at the bottom
--- Always use the system clipboard for yanking/pasting
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = ""
 
 -- If we are on a remote machine via SSH, override the clipboard
 -- provider to use OSC 52.

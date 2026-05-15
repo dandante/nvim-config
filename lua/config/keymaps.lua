@@ -12,6 +12,13 @@ end, { desc = "Go to Dashboard" })
 
 local wk = require("which-key")
 wk.add({
+    {
+      "<leader>.",
+      function()
+          vim.fn.setreg("*", vim.fn.getreg("0"))
+      end,
+      desc = "Reg to Ext Clipboard",
+  },
   { "<leader>=", group = "Flash" }, -- group
   {
     "<leader>=s",
