@@ -2,7 +2,7 @@
 -- copy neovim's latest yank to system clipboard
 -- TODO add key mapping
 vim.api.nvim_create_user_command("Epaste", function()
-    vim.fn.setreg("*", vim.fn.getreg("0"))
+    vim.fn.setreg("+", vim.fn.getreg("0"))
 end, {})
 -- vim.cmd [[colorscheme default]]
 
