@@ -15,7 +15,7 @@ wk.add({
     {
       "<leader>.",
       function()
-          vim.fn.setreg("*", vim.fn.getreg("0"))
+          vim.fn.setreg("+", vim.fn.getreg("0"))
       end,
       desc = "Reg to Ext Clipboard",
   },
