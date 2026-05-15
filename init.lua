@@ -147,7 +147,18 @@ wk.add({
 })
 
 -- ** ENABLE BUILT-IN THINGS
-require("vim._core.ui2").enable()
+-- require("vim._core.ui2").enable()
+require('vim._core.ui2').enable({
+    enable = true,
+    msg = {
+        target = "cmd", -- options: cmd(classic), msg(similar to noice)
+        pager = { height = 1 },
+        msg   = { height = 0.5, timeout = 4500 },
+        dialog = { height = 0.5 },
+        cmd    = { height = 0.5 },
+    },
+})
+
 vim.cmd.packadd("cfilter")
 vim.cmd.packadd("nvim.undotree")
 vim.cmd.packadd("nvim.difftool")
