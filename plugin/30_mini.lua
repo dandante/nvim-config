@@ -124,7 +124,52 @@ now(function() require('mini.starter').setup() end)
 -- See also:
 -- - `:h MiniStatusline-example-content` - example of default content. Use it to
 --   configure a custom statusline by setting `config.content.active` function.
-now(function() require('mini.statusline').setup() end)
+-- now(function() require('mini.statusline').setup() end)
+--CUSTOM STATUSLINE
+now(function()
+  local statusline = require('mini.statusline')
+
+  -- Grab the hostname once at startup
+  local hostname = vim.uv.os_gethostname() or "unknown"
+
+  statusline.setup({
+    content = {
+      active = function()
+        if vim.bo.filetype == 'fzf' then return '%#MiniStatuslineDevinfo# FZF' end
+
+        -- 1. Keep all original built-in sections intact
+        local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
+        local git           = statusline.section_git({ trunc_width = 40 })
+        local diff          = statusline.section_diff({ trunc_width = 75 })
+        local diagnostics   = statusline.section_diagnostics({ trunc_width = 75 })
+        local lsp           = statusline.section_lsp({ trunc_width = 75 })
+        local filename      = statusline.section_filename({ trunc_width = 140 })
+        local fileinfo      = statusline.section_fileinfo({ trunc_width = 120 })
+        local location      = statusline.section_location({ trunc_width = 75 })
+        local search        = statusline.section_searchcount({ trunc_width = 75 })
+
+        -- 2. Define just the raw text string
+        local host_section = string.format('💻 %s ', hostname)
+        -- 3. Combine them in your exact desired order
+        return statusline.combine_groups({
+          { hl = mode_hl,                  strings = { mode } },
+          { hl = 'MiniStatuslineDevinfo',  strings = { git, diff, diagnostics } },
+          '%<',
+          { hl = 'MiniStatuslineFilename', strings = { filename } },
+
+          -- Pass the highlight group directly to the item array here:
+          { hl = 'MiniStatuslineFilename', strings = { host_section } },
+
+          '%=',
+          { hl = 'MiniStatuslineFileinfo', strings = { lsp, fileinfo } },
+          { hl = mode_hl,                  strings = { search, location } },
+        })
+              end,
+            },
+          })
+
+      end)
+
 
 -- Tabline. Sets `:h 'tabline'` to show all listed buffers in a line at the top.
 -- Buffers are ordered as they were created. Navigate with `[b` and `]b`.
