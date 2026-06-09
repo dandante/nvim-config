@@ -53,7 +53,7 @@ Config.leader_group_clues = {
   { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
   { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
   { mode = 'n', keys = '<Leader>f', desc = '+Find' },
-  -- { mode = 'n', keys = '<Leader>g', desc = '+Git' },
+  { mode = 'n', keys = '<Leader>g', desc = '+Git' },
   { mode = 'n', keys = '<Leader>l', desc = '+Language' },
   { mode = 'n', keys = '<Leader>m', desc = '+Map' },
   { mode = 'n', keys = '<Leader>o', desc = '+Other' },
@@ -91,7 +91,6 @@ nmap_leader('bD', '<Cmd>lua MiniBufremove.delete(0, true)<CR>',  'Delete!')
 nmap_leader('bs', new_scratch_buffer,                            'Scratch')
 nmap_leader('bw', '<Cmd>lua MiniBufremove.wipeout()<CR>',        'Wipeout')
 nmap_leader('bW', '<Cmd>lua MiniBufremove.wipeout(0, true)<CR>', 'Wipeout!')
-
 -- e is for 'Explore' and 'Edit'. Common usage:
 -- - `<Leader>ed` - open explorer at current working directory
 -- - `<Leader>ef` - open directory of current file (needs to be present on disk)
@@ -163,7 +162,7 @@ nmap_leader('fV', '<Cmd>Pick visit_paths<CR>',                  'Visit paths (cw
 -- local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
 -- local git_log_buf_cmd = git_log_cmd .. ' --follow -- %'
 --
-nmap_leader('g', '<Cmd>LazyGit<CR>', 'LazyGit')
+nmap_leader('gg', '<Cmd>LazyGit<CR>', 'LazyGit')
 -- nmap_leader('ga', '<Cmd>Git diff --cached<CR>',             'Added diff')
 -- nmap_leader('gA', '<Cmd>Git diff --cached -- %<CR>',        'Added diff buffer')
 -- nmap_leader('gc', '<Cmd>Git commit<CR>',                    'Commit')
